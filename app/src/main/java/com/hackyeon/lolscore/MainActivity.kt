@@ -13,6 +13,7 @@ import com.hackyeon.lolscore.adapter.MainRecyclerViewAdapter
 import com.hackyeon.lolscore.data.SummonerData
 import com.hackyeon.lolscore.data.Tier
 import com.hackyeon.lolscore.data.DataObject.BASE_URL
+import com.hackyeon.lolscore.data.DataObject.mainActivity
 import com.hackyeon.lolscore.data.DataObject.sendObjectData
 import com.hackyeon.lolscore.data.database.Summoner
 import com.hackyeon.lolscore.data.database.SummonerDatabase
@@ -44,6 +45,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initView() {
+        mainActivity = this
+
         retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())

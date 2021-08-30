@@ -11,9 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LolScore">
-<!--        <activity-->
-<!--            android:name=".TestActivity"-->
-<!--            android:exported="true" />-->
+        <activity
+            android:name=".TestActivity"
+            android:exported="true" />
         <activity
             android:name=".MatchActivity"
             android:exported="true" />

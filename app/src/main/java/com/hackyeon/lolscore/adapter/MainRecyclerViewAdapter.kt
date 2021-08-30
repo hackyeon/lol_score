@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.hackyeon.lolscore.MainActivity
 import com.hackyeon.lolscore.MatchActivity
+import com.hackyeon.lolscore.R
 import com.hackyeon.lolscore.data.DataObject.sendObjectData
 import com.hackyeon.lolscore.data.database.Summoner
 import com.hackyeon.lolscore.databinding.ItemMainBinding

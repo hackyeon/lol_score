@@ -1,5 +1,8 @@
 package com.hackyeon.lolscore.data
 
+import com.hackyeon.lolscore.MainActivity
+import com.hackyeon.lolscore.MatchActivity
+import com.hackyeon.lolscore.TestActivity
 import com.hackyeon.lolscore.data.database.Summoner
 
 object DataObject {
@@ -10,6 +13,10 @@ object DataObject {
     const val GET_TIER = "league/v4/entries/by-summoner/{encryptedSummonerId}"
     const val GET_MATCH_DATA = "match/v4/matchlists/by-account/{encryptedAccountId}"
     const val GET_MATCH_DETAIL = "match/v4/matches/{matchId}"
+
+    var mainActivity: MainActivity? =null
+    var matchActivity: MatchActivity? = null
+    var testActivity: TestActivity? = null
 
     var accountId: String = ""
     var name: String = ""
