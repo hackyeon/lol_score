@@ -1,10 +1,7 @@
 package com.hackyeon.lolscore.service
 
-import com.hackyeon.lolscore.data.Matches
+import com.hackyeon.lolscore.data.*
 import com.hackyeon.lolscore.data.DataObject.API_KEY
-import com.hackyeon.lolscore.data.SummonerData
-import com.hackyeon.lolscore.data.Test
-import com.hackyeon.lolscore.data.Tier
 import com.hackyeon.lolscore.data.DataObject.GET_MATCH_DATA
 import com.hackyeon.lolscore.data.DataObject.GET_MATCH_DETAIL
 import com.hackyeon.lolscore.data.DataObject.GET_SUMMONER
@@ -64,4 +61,9 @@ interface RetrofitService {
     fun getDetail(
         @Path("matchId")gameId: Long
     ): Call<Test>
+
+
+    // 테스트용
+    @GET("cdn/11.16.1/data/en_US/champion.json")
+    fun getChampionImg(): Call<TestImg>
 }

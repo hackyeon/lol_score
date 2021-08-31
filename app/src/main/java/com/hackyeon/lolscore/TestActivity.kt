@@ -8,6 +8,7 @@ import com.hackyeon.lolscore.data.Tier
 import com.hackyeon.lolscore.data.DataObject.BASE_URL
 import com.hackyeon.lolscore.data.DataObject.matchActivity
 import com.hackyeon.lolscore.data.DataObject.testActivity
+import com.hackyeon.lolscore.data.TestImg
 import com.hackyeon.lolscore.databinding.ActivityTestBinding
 import com.hackyeon.lolscore.service.RetrofitService
 import retrofit2.Call
@@ -24,15 +25,30 @@ class TestActivity : AppCompatActivity() {
         binding = ActivityTestBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        testActivity = this
 
-        binding.button.setOnClickListener {
-            matchActivity?.finish()
-            matchActivity = null
-            var intent = Intent(this@TestActivity, MatchActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
+        var retrofit = Retrofit.Builder()
+            .baseUrl("http://ddragon.leagueoflegends.com/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        var retrofitService = retrofit.create(RetrofitService::class.java)
+
+
+        retrofitService.getChampionImg().enqueue(object: Callback<TestImg>{
+
+            override fun onResponse(call: Call<TestImg>, response: Response<TestImg>) {
+                if(response.isSuccessful){
+
+
+                    var test = response.body()?.data?.getAsJsonObject("Ahri")
+                    Log.d("aabb", "$test")
+                }
+
+            }
+
+            override fun onFailure(call: Call<TestImg>, t: Throwable) {
+            }
+        })
 
     }
 }

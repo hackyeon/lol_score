@@ -6,7 +6,7 @@ import com.hackyeon.lolscore.TestActivity
 import com.hackyeon.lolscore.data.database.Summoner
 
 object DataObject {
-    const val API_KEY = "RGAPI-670cee86-c044-4486-b4cd-95402946391e"
+    const val API_KEY = "RGAPI-1f58242c-388e-4cb2-826b-9b5ed42ae351"
 
     const val BASE_URL = "https://kr.api.riotgames.com/lol/"
     const val GET_SUMMONER = "summoner/v4/summoners/by-name/{name}"
@@ -16,6 +16,8 @@ object DataObject {
 
     var mainActivity: MainActivity? =null
     var matchActivity: MatchActivity? = null
+
+    // 테스트용
     var testActivity: TestActivity? = null
 
     var accountId: String = ""
@@ -35,4 +37,5 @@ object DataObject {
         tier = summoner.tier
         rank = summoner.rank
     }
+
 }
