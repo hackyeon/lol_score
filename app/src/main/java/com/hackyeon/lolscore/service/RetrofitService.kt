@@ -60,10 +60,14 @@ interface RetrofitService {
     @GET(GET_MATCH_DETAIL)
     fun getDetail(
         @Path("matchId")gameId: Long
-    ): Call<Test>
+    ): Call<Detail>
 
 
-    // 테스트용
+    // 챔피언 레트로핏
     @GET("cdn/11.16.1/data/en_US/champion.json")
-    fun getChampionImg(): Call<TestImg>
+    fun getChampionImg(): Call<ImgDataJson>
+
+    // 스펠
+    @GET("cdn/11.16.1/data/en_US/summoner.json")
+    fun getSpellImg(): Call<ImgDataJson>
 }

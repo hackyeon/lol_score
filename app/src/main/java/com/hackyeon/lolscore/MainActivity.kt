@@ -124,8 +124,12 @@ class MainActivity : AppCompatActivity() {
                     var responseTier = "Unranked"
                     var responseRank = ""
                     if (!response.body().isNullOrEmpty()) {
-                        responseTier = response.body()!![0].tier
-                        responseRank = response.body()!![0].rank
+                        for(i in response.body()!!){
+                            if(i.queueType == "RANKED_SOLO_5x5"){
+                                responseTier = i.tier
+                                responseRank = i.rank
+                            }
+                        }
                     }
 
                     var summoner = Summoner(body.accountId, body.name, body.profileIconId, body.summonerLevel, body.id, responseTier, responseRank)

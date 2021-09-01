@@ -6,7 +6,7 @@ import com.hackyeon.lolscore.TestActivity
 import com.hackyeon.lolscore.data.database.Summoner
 
 object DataObject {
-    const val API_KEY = "RGAPI-1f58242c-388e-4cb2-826b-9b5ed42ae351"
+    const val API_KEY = "RGAPI-6626466e-f37c-4a2c-b426-093522f680bf"
 
     const val BASE_URL = "https://kr.api.riotgames.com/lol/"
     const val GET_SUMMONER = "summoner/v4/summoners/by-name/{name}"

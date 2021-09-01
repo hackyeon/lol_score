@@ -1,14 +1,8 @@
 package com.hackyeon.lolscore
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import com.hackyeon.lolscore.data.Tier
-import com.hackyeon.lolscore.data.DataObject.BASE_URL
-import com.hackyeon.lolscore.data.DataObject.matchActivity
-import com.hackyeon.lolscore.data.DataObject.testActivity
-import com.hackyeon.lolscore.data.TestImg
+import com.hackyeon.lolscore.data.ImgDataJson
 import com.hackyeon.lolscore.databinding.ActivityTestBinding
 import com.hackyeon.lolscore.service.RetrofitService
 import retrofit2.Call
@@ -34,19 +28,17 @@ class TestActivity : AppCompatActivity() {
         var retrofitService = retrofit.create(RetrofitService::class.java)
 
 
-        retrofitService.getChampionImg().enqueue(object: Callback<TestImg>{
+        retrofitService.getChampionImg().enqueue(object: Callback<ImgDataJson>{
 
-            override fun onResponse(call: Call<TestImg>, response: Response<TestImg>) {
+            override fun onResponse(call: Call<ImgDataJson>, response: Response<ImgDataJson>) {
                 if(response.isSuccessful){
 
-
                     var test = response.body()?.data?.getAsJsonObject("Ahri")
-                    Log.d("aabb", "$test")
                 }
 
             }
 
-            override fun onFailure(call: Call<TestImg>, t: Throwable) {
+            override fun onFailure(call: Call<ImgDataJson>, t: Throwable) {
             }
         })
 
