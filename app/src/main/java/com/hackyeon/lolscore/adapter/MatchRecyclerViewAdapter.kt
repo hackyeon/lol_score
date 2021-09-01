@@ -39,8 +39,8 @@ class MatchRecyclerViewAdapter(
         ) {
             Glide.with(context)
                 .load("http://ddragon.leagueoflegends.com/cdn/11.16.1/img/$type/${nameOrNum}.png")
-                .placeholder(R.drawable.emblem_bronze)
-                .centerInside()
+                .placeholder(R.drawable.no_img)
+                .centerCrop()
                 .into(imageView)
         }
 
@@ -59,20 +59,21 @@ class MatchRecyclerViewAdapter(
             "champion"
         )
 
-        var resultColor =
-            if (statsMap[position]?.win == true) R.color.win_blue else R.color.lose_red
+        var resultColor = if (statsMap[position]?.win == true) R.color.win_blue else R.color.lose_red
         var resultText = if (statsMap[position]?.win == true) "승" else "패"
-        var playTime = "${detailMap[position]?.gameDuration?.div(60)}:${
-            detailMap[position]?.gameDuration?.rem(60)
-        }"
+        if(detailMap[position]?.gameDuration != null){
+            var playHour = if(detailMap[position]?.gameDuration?.div(60)!! < 10) "0${(detailMap[position]?.gameDuration?.div(60))}" else "${(detailMap[position]?.gameDuration?.div(60))}"
+            var playMinute = if(detailMap[position]?.gameDuration?.div(60)!! < 10) "0${detailMap[position]?.gameDuration?.div(60)}" else "${detailMap[position]?.gameDuration?.div(60)}"
 
-        holder.binding.resultTextView.setBackgroundColor(
-            ContextCompat.getColor(
-                context,
-                resultColor
-            )
-        )
-        holder.binding.resultTextView.text = "$resultText\n$playTime"
+            holder.binding.resultTextView.apply {
+                setBackgroundColor(ContextCompat.getColor(context, resultColor))
+                text = resultText
+            }
+            holder.binding.timeTextView.apply {
+                setBackgroundColor(ContextCompat.getColor(context, resultColor))
+                text = "$playHour:$playMinute"
+            }
+        }
 
         holder.glideImg(
             context,
@@ -103,7 +104,7 @@ class MatchRecyclerViewAdapter(
         holder.glideImg(context, statsMap[position]?.item6, holder.binding.itemSixImageView, "item")
 
         var kda =
-            "${statsMap[position]?.kills}/${statsMap[position]?.deaths}/${statsMap[position]?.assists}"
+            "${statsMap[position]?.kills} / ${statsMap[position]?.deaths} / ${statsMap[position]?.assists}"
         holder.binding.kdaTextView.text = kda
 
         holder.glideImg(context, spell1[position], holder.binding.spellOneImageView, "spell")

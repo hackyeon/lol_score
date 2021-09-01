@@ -31,7 +31,8 @@ class MainRecyclerViewAdapter(private var dataSet: MutableList<Summoner>,private
 
         Glide.with(context)
             .load("http://ddragon.leagueoflegends.com/cdn/11.16.1/img/profileicon/${dataSet[position].profileIconId}.png")
-            .centerInside()
+            .centerCrop()
+            .placeholder(R.drawable.no_img)
             .into(holder.binding.profileImageView)
 
         holder.binding.levelTextView.text = dataSet[position].summonerLevel.toString()

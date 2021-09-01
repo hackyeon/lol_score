@@ -77,7 +77,8 @@ class MatchActivity : AppCompatActivity() {
 
         Glide.with(this)
             .load("http://ddragon.leagueoflegends.com/cdn/11.16.1/img/profileicon/${profileIconId}.png")
-            .centerInside()
+            .placeholder(R.drawable.no_img)
+            .centerCrop()
             .into(binding.profileImageView)
 
         binding.apply {
