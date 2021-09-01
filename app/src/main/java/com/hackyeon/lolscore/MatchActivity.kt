@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.hackyeon.lolscore.adapter.MatchRecyclerViewAdapter
 import com.hackyeon.lolscore.data.*
@@ -37,6 +38,7 @@ class MatchActivity : AppCompatActivity() {
     private var spell1Map = mutableMapOf<Int, String>()
     private var spell2Map = mutableMapOf<Int, String>()
     private var mapKey = 0
+    private var isLoading = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +47,22 @@ class MatchActivity : AppCompatActivity() {
 
         initView()
         loadData()
+        createListener()
+    }
+
+    private fun createListener(){
+        binding.matchRecyclerView.addOnScrollListener(object: RecyclerView.OnScrollListener(){
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                if(!binding.matchRecyclerView.canScrollVertically(1)){
+                    if(!isLoading){
+                        isLoading = true
+                        beginIndex += 5
+                        endIndex += 5
+                        loadData()
+                    }
+                }
+            }
+        })
     }
 
     private fun initView() {
@@ -80,7 +98,7 @@ class MatchActivity : AppCompatActivity() {
                 override fun onResponse(call: Call<Matches>, response: Response<Matches>) {
                     if (response.isSuccessful) {
                         var matches = response.body()?.matches
-                        if (matches?.size != 0) {
+                        if (!matches.isNullOrEmpty()) {
                             for (i in matches!!) {
                                 matchList.add(i)
                                 loadDataDetail(i, mapKey)
@@ -117,7 +135,9 @@ class MatchActivity : AppCompatActivity() {
                             }
                         }
                     }
-                    binding.matchRecyclerView.adapter?.notifyDataSetChanged()
+//                    binding.matchRecyclerView.adapter?.notifyDataSetChanged()
+                    binding.matchRecyclerView.adapter?.notifyItemRangeChanged(championImgList.size-5, 5)
+                    isLoading = false
                 }
             }
 
@@ -170,7 +190,8 @@ class MatchActivity : AppCompatActivity() {
                             spell2Map[key] = i
                         }
                     }
-                    binding.matchRecyclerView.adapter?.notifyDataSetChanged()
+                    binding.matchRecyclerView.adapter?.notifyItemRangeChanged(key, 1)
+//                    binding.matchRecyclerView.adapter?.notifyDataSetChanged()
                 }
             }
             override fun onFailure(call: Call<ImgDataJson>, t: Throwable) {

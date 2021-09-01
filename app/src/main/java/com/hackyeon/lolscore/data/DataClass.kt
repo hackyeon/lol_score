@@ -17,7 +17,7 @@ data class Tier(
 )
 
 data class Matches(
-    val matches: MutableList<Match>
+    val matches: MutableList<Match>,
 )
 
 data class Match(
