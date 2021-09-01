@@ -3,6 +3,8 @@ package com.hackyeon.lolscore
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View.GONE
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -38,7 +40,7 @@ class MatchActivity : AppCompatActivity() {
     private var spell1Map = mutableMapOf<Int, String>()
     private var spell2Map = mutableMapOf<Int, String>()
     private var mapKey = 0
-    private var isLoading = false
+    private var isLoading = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,11 +52,11 @@ class MatchActivity : AppCompatActivity() {
         createListener()
     }
 
-    private fun createListener(){
-        binding.matchRecyclerView.addOnScrollListener(object: RecyclerView.OnScrollListener(){
+    private fun createListener() {
+        binding.matchRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                if(!binding.matchRecyclerView.canScrollVertically(1)){
-                    if(!isLoading){
+                if (!binding.matchRecyclerView.canScrollVertically(1)) {
+                    if (!isLoading) {
                         isLoading = true
                         beginIndex += 5
                         endIndex += 5
@@ -85,11 +87,40 @@ class MatchActivity : AppCompatActivity() {
             levelTextView.text = summonerLevel.toString()
             nameTextView.text = name
             tierTextView.text = if (rank == "") tier else "$tier $rank"
+
+            var imgSrc = when (tier) {
+                "IRON" -> R.drawable.emblem_iron
+                "BRONZE" -> R.drawable.emblem_bronze
+                "SILVER" -> R.drawable.emblem_silver
+                "GOLD" -> R.drawable.emblem_gold
+                "PLATINUM" -> R.drawable.emblem_platinum
+                "DIAMOND" -> R.drawable.emblem_diamond
+                "MASTER" -> R.drawable.emblem_master
+                "GRANDMASTER" -> R.drawable.emblem_grandmaster
+                "CHALLENGER" -> R.drawable.emblem_challenger
+                else -> {
+                    binding.emblemImageView.visibility = GONE
+                    R.drawable.no_img
+                }
+            }
+
+            binding.emblemImageView.setImageResource(imgSrc)
+
         }
 
         binding.matchRecyclerView.layoutManager = LinearLayoutManager(this)
         binding.matchRecyclerView.adapter =
-            MatchRecyclerViewAdapter(championImgList, detailMap, participantsMap, statsMap, spell1Map, spell2Map, matchList, this)
+            MatchRecyclerViewAdapter(
+                championImgList,
+                detailMap,
+                participantsMap,
+                statsMap,
+                spell1Map,
+                spell2Map,
+                matchList,
+                this
+            )
+
     }
 
 
@@ -131,13 +162,18 @@ class MatchActivity : AppCompatActivity() {
 
                     for (i in matches) {
                         for (j in dataList!!) {
-                            if (i.champion.toString() == data?.getAsJsonObject(j)?.getAsJsonPrimitive("key")?.asString) {
+                            if (i.champion.toString() == data?.getAsJsonObject(j)
+                                    ?.getAsJsonPrimitive("key")?.asString
+                            ) {
                                 championImgList.add(j)
                             }
                         }
                     }
 //                    binding.matchRecyclerView.adapter?.notifyDataSetChanged()
-                    binding.matchRecyclerView.adapter?.notifyItemRangeChanged(championImgList.size-5, 5)
+                    binding.matchRecyclerView.adapter?.notifyItemRangeChanged(
+                        championImgList.size - 5,
+                        5
+                    )
                     isLoading = false
                 }
             }
@@ -185,9 +221,13 @@ class MatchActivity : AppCompatActivity() {
                     var dataList = data?.keySet()
 
                     for (i in dataList!!) {
-                        if (participants.spell1Id.toString() == data?.getAsJsonObject(i)?.getAsJsonPrimitive("key")?.asString) {
+                        if (participants.spell1Id.toString() == data?.getAsJsonObject(i)
+                                ?.getAsJsonPrimitive("key")?.asString
+                        ) {
                             spell1Map[key] = i
-                        } else if (participants.spell2Id.toString() == data?.getAsJsonObject(i)?.getAsJsonPrimitive("key")?.asString) {
+                        } else if (participants.spell2Id.toString() == data?.getAsJsonObject(i)
+                                ?.getAsJsonPrimitive("key")?.asString
+                        ) {
                             spell2Map[key] = i
                         }
                     }
@@ -195,6 +235,7 @@ class MatchActivity : AppCompatActivity() {
 //                    binding.matchRecyclerView.adapter?.notifyDataSetChanged()
                 }
             }
+
             override fun onFailure(call: Call<ImgDataJson>, t: Throwable) {
             }
         })

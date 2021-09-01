@@ -2,20 +2,18 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/matchLayout"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:paddingTop="2dp"
     android:background="@color/match_item_background"
-    android:paddingTop="5dp">
-
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/resultTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="45dp"
+        android:layout_height="50dp"
         android:gravity="center"
         android:paddingHorizontal="15dp"
         android:paddingTop="25dp"
-        android:text="승"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@id/timeTextView"
@@ -24,11 +22,10 @@
 
     <TextView
         android:id="@+id/timeTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="45dp"
+        android:layout_height="50dp"
         android:gravity="center"
         android:paddingBottom="25dp"
-        android:text="38:12"
         android:textColor="@color/white"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -39,9 +36,8 @@
     <LinearLayout
         android:id="@+id/infoLayout"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="100dp"
         android:background="@color/white"
-        android:gravity="center"
         android:orientation="vertical"
         android:paddingStart="10dp"
         app:layout_constraintBottom_toBottomOf="@id/timeTextView"
@@ -51,22 +47,19 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
-            android:orientation="horizontal"
-            android:paddingVertical="5dp">
+            android:layout_height="66dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="52dp"
                 android:layout_height="52dp"
                 app:cardCornerRadius="26dp"
                 app:cardElevation="0dp">
-
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/championImageView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
-
             </androidx.cardview.widget.CardView>
 
 
@@ -80,7 +73,7 @@
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     app:cardCornerRadius="12.5dp"
-                    android:layout_marginBottom="1dp"
+                    android:layout_marginBottom="2dp"
                     app:cardElevation="0dp">
 
                     <androidx.appcompat.widget.AppCompatImageView
@@ -94,7 +87,6 @@
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     app:cardCornerRadius="12.5dp"
-                    android:layout_marginTop="1dp"
                     app:cardElevation="0dp">
 
                     <androidx.appcompat.widget.AppCompatImageView
@@ -118,48 +110,47 @@
         </LinearLayout>
 
         <LinearLayout
+            android:gravity="center_vertical"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:paddingBottom="5dp">
+            android:layout_height="34dp"
+            android:orientation="horizontal">
 
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/itemZeroImageView"
                 android:layout_width="26dp"
                 android:layout_height="26dp"
-                android:layout_marginEnd="4dp" />
+                android:layout_marginEnd="2dp" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/itemOneImageView"
                 android:layout_width="26dp"
                 android:layout_height="26dp"
-                android:layout_marginEnd="4dp" />
+                android:layout_marginEnd="2dp" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/itemTwoImageView"
                 android:layout_width="26dp"
                 android:layout_height="26dp"
-                android:layout_marginEnd="4dp" />
+                android:layout_marginEnd="2dp" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/itemThreeImageView"
                 android:layout_width="26dp"
                 android:layout_height="26dp"
-                android:layout_marginEnd="4dp" />
+                android:layout_marginEnd="2dp" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/itemFourImageView"
                 android:layout_width="26dp"
                 android:layout_height="26dp"
-                android:layout_marginEnd="4dp" />
+                android:layout_marginEnd="2dp" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/itemFiveImageView"
                 android:layout_width="26dp"
                 android:layout_height="26dp"
-                android:layout_marginEnd="4dp" />
+                android:layout_marginEnd="2dp" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/itemSixImageView"
@@ -179,7 +170,6 @@
         android:background="@color/white"
         android:gravity="center"
         android:paddingHorizontal="5dp"
-        android:text="08/19\n13:33"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@id/timeTextView"
         app:layout_constraintEnd_toEndOf="parent"
