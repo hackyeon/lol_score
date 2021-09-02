@@ -1,3 +1,5 @@
 1. glide api 버전별 사용법이 다른지??
 
 2. activity 시작과 종료 관련해서
+
+3. xml의 명령어 모두다 kotlin으로 사용이 가능한지

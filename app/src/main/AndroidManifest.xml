@@ -12,10 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LolScore">
         <activity
-            android:name=".TestActivity"
-            android:exported="true" >
-
-        </activity>
+            android:name=".DetailActivity"
+            android:exported="true" />
+        <!-- <activity -->
+        <!-- android:name=".TestActivity" -->
+        <!-- android:exported="true" > -->
+        <!-- </activity> -->
         <activity
             android:name=".MatchActivity"
             android:exported="true" />
@@ -27,7 +29,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
     </application>
 

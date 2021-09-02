@@ -8,6 +8,7 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.inputmethod.InputMethodManager
 import androidx.core.view.isVisible
+import androidx.core.view.marginTop
 import androidx.recyclerview.widget.GridLayoutManager
 import com.hackyeon.lolscore.adapter.MainRecyclerViewAdapter
 import com.hackyeon.lolscore.data.SummonerData
@@ -159,7 +160,7 @@ class MainActivity : AppCompatActivity() {
 
                         runOnUiThread {
                             if(binding.recordRecyclerView.visibility == GONE){
-                                binding.recordTextViewL.visibility = VISIBLE
+                                binding.recordTextView.visibility = VISIBLE
                                 binding.recordRecyclerView.visibility = VISIBLE
                             }
                             binding.recordRecyclerView.adapter?.notifyDataSetChanged()
@@ -176,7 +177,7 @@ class MainActivity : AppCompatActivity() {
 
     fun recordVisibilityGone(){
         binding.recordRecyclerView.visibility = GONE
-        binding.recordTextViewL.visibility = GONE
+        binding.recordTextView.visibility = GONE
     }
 
 }

@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide
 import com.hackyeon.lolscore.adapter.MatchRecyclerViewAdapter
 import com.hackyeon.lolscore.data.*
 import com.hackyeon.lolscore.data.DataObject.BASE_URL
+import com.hackyeon.lolscore.data.DataObject.IMG_URL
 import com.hackyeon.lolscore.data.DataObject.accountId
 import com.hackyeon.lolscore.data.DataObject.matchActivity
 import com.hackyeon.lolscore.data.DataObject.name
@@ -19,6 +20,7 @@ import com.hackyeon.lolscore.data.DataObject.rank
 import com.hackyeon.lolscore.data.DataObject.summonerLevel
 import com.hackyeon.lolscore.data.DataObject.tier
 import com.hackyeon.lolscore.databinding.ActivityMatchBinding
+import com.hackyeon.lolscore.service.ImgRetrofitService
 import com.hackyeon.lolscore.service.RetrofitService
 import retrofit2.Call
 import retrofit2.Callback
@@ -30,6 +32,8 @@ class MatchActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMatchBinding
     private lateinit var retrofit: Retrofit
     private lateinit var retrofitService: RetrofitService
+    private lateinit var imgRetrofit: Retrofit
+    private lateinit var imgRetrofitService: ImgRetrofitService
     private var beginIndex = 0
     private var endIndex = 5
     private var matchList = mutableListOf<Match>()
@@ -76,6 +80,14 @@ class MatchActivity : AppCompatActivity() {
             .build()
 
         retrofitService = retrofit.create(RetrofitService::class.java)
+
+        imgRetrofit = Retrofit.Builder()
+            .baseUrl(IMG_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        imgRetrofitService = imgRetrofit.create(ImgRetrofitService::class.java)
+
 
         Glide.with(this)
             .load("http://ddragon.leagueoflegends.com/cdn/11.16.1/img/profileicon/${profileIconId}.png")
@@ -147,13 +159,7 @@ class MatchActivity : AppCompatActivity() {
     }
 
     private fun loadChampionImg(matches: MutableList<Match>) {
-        var championImgRetrofit = Retrofit.Builder().baseUrl("http://ddragon.leagueoflegends.com/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        var championImgRetrofitService = championImgRetrofit.create(RetrofitService::class.java)
-
-        championImgRetrofitService.getChampionImg().enqueue(object : Callback<ImgDataJson> {
+        imgRetrofitService.getChampionImg().enqueue(object : Callback<ImgDataJson> {
             override fun onResponse(call: Call<ImgDataJson>, response: Response<ImgDataJson>) {
                 if (response.isSuccessful) {
 
@@ -208,13 +214,7 @@ class MatchActivity : AppCompatActivity() {
     }
 
     private fun loadSpellImg(key: Int, participants: Participants) {
-        var spellImgRetrofit = Retrofit.Builder().baseUrl("http://ddragon.leagueoflegends.com/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        var spellImgRetrofitService = spellImgRetrofit.create(RetrofitService::class.java)
-
-        spellImgRetrofitService.getSpellImg().enqueue(object : Callback<ImgDataJson> {
+        imgRetrofitService.getSpellImg().enqueue(object : Callback<ImgDataJson> {
             override fun onResponse(call: Call<ImgDataJson>, response: Response<ImgDataJson>) {
                 if (response.isSuccessful) {
                     var data = response.body()?.data

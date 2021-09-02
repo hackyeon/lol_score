@@ -63,11 +63,5 @@ interface RetrofitService {
     ): Call<Detail>
 
 
-    // 챔피언 레트로핏
-    @GET("cdn/11.16.1/data/en_US/champion.json")
-    fun getChampionImg(): Call<ImgDataJson>
 
-    // 스펠
-    @GET("cdn/11.16.1/data/en_US/summoner.json")
-    fun getSpellImg(): Call<ImgDataJson>
 }
