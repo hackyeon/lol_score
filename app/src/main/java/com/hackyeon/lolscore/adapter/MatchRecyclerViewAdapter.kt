@@ -2,13 +2,10 @@ package com.hackyeon.lolscore.adapter
 
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.hackyeon.lolscore.DetailActivity
 import com.hackyeon.lolscore.R
 import com.hackyeon.lolscore.data.DataObject.detail
@@ -46,12 +43,12 @@ class MatchRecyclerViewAdapter(
             if (statsMap[position]?.win == true) R.color.win_blue else R.color.lose_red
         var resultText = if (statsMap[position]?.win == true) "승" else "패"
         if (detailMap[position]?.gameDuration != null) {
-            var playHour = if (detailMap[position]?.gameDuration?.div(60)!! < 10) "0${
+            var playMinute = if (detailMap[position]?.gameDuration?.div(60)!! < 10) "0${
                 (detailMap[position]?.gameDuration?.div(60))
             }" else "${(detailMap[position]?.gameDuration?.div(60))}"
-            var playMinute = if (detailMap[position]?.gameDuration?.div(60)!! < 10) "0${
-                detailMap[position]?.gameDuration?.div(60)
-            }" else "${detailMap[position]?.gameDuration?.div(60)}"
+            var playSecond = if (detailMap[position]?.gameDuration?.rem(60)!! < 10) "0${
+                detailMap[position]?.gameDuration?.rem(60)
+            }" else "${detailMap[position]?.gameDuration?.rem(60)}"
 
             holder.binding.resultTextView.apply {
                 setBackgroundColor(ContextCompat.getColor(context, resultColor))
@@ -59,7 +56,7 @@ class MatchRecyclerViewAdapter(
             }
             holder.binding.timeTextView.apply {
                 setBackgroundColor(ContextCompat.getColor(context, resultColor))
-                text = "$playHour:$playMinute"
+                text = "$playMinute:$playSecond"
             }
         }
 
@@ -79,15 +76,16 @@ class MatchRecyclerViewAdapter(
         glideImg(context, spell2[position], holder.binding.spellTwoImageView, "spell")
 
         val sdf = SimpleDateFormat("MM/dd\nHH:mm")
-        var gameDate = matchList[position].timestamp
-        var test = Date(gameDate)
-        var date = sdf.format(test)
-        holder.binding.dateTextView.text = date
+        var gameTimeStamp = matchList[position].timestamp
+        var gameDate = Date(gameTimeStamp)
+        var resultDate = sdf.format(gameDate)
+        holder.binding.dateTextView.text = resultDate
 
         holder.binding.matchLayout.setOnClickListener {
             if (detailMap[position] != null) {
                 detail = detailMap[position]!!
                 var intent = Intent(context, DetailActivity::class.java)
+                intent.putExtra("timeStamp", matchList[position].timestamp)
                 context.startActivity(intent)
             }
         }

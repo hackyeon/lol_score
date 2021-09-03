@@ -52,6 +52,7 @@ data class Team(
 
 data class Participants(
     val championId: Int,
+    val teamId: Int,
     val spell1Id: Int,
     val spell2Id: Int,
     val stats: Stats

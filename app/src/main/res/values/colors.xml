@@ -9,5 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="win_blue">#6E70FF</color>
     <color name="lose_red">#FF6868</color>
+    <color name="win_blue_soft">#CECEFF</color>
+    <color name="lose_red_soft">#FFCFCF</color>
     <color name="match_item_background">#e2e2e2</color>
 </resources>

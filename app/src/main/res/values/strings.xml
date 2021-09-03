@@ -1,6 +1,4 @@
 <resources>
     <string name="app_name">lolScore</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="record_text">최근 기록</string>
 </resources>
