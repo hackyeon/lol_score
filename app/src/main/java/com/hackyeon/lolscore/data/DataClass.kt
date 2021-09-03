@@ -30,8 +30,26 @@ data class Match(
 // 이게 매치 상세데이터 가져올 준비중인 클래스 현재 테스트중
 data class Detail(
     val gameDuration: Long,
-    val participants: MutableList<Participants>
+    val teams: MutableList<Team>,
+    val participants: MutableList<Participants>,
+    val participantIdentities: MutableList<ParticipantIdentities>
 )
+
+data class ParticipantIdentities(
+    val player: Player
+)
+data class Player(
+    val summonerName: String
+)
+
+data class Team(
+    val win: String,
+    val teamId: Int,
+    val towerKills: Int,
+    val baronKills: Int,
+    val dragonKills: Int
+)
+
 data class Participants(
     val championId: Int,
     val spell1Id: Int,
@@ -49,9 +67,13 @@ data class Stats(
     val item6: Int,
     val kills: Int,
     val deaths: Int,
-    val assists: Int
+    val assists: Int,
+    val goldEarned: Int,
+    val totalDamageTaken: Long,
+    val champLevel: Int,
+    val totalMinionsKilled: Int,
+    val neutralMinionsKilled: Int
 )
-
 
 // 챔피언,스펠 이미지
 data class ImgDataJson(

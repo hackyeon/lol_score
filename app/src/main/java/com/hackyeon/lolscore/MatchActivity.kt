@@ -13,10 +13,16 @@ import com.hackyeon.lolscore.data.*
 import com.hackyeon.lolscore.data.DataObject.BASE_URL
 import com.hackyeon.lolscore.data.DataObject.IMG_URL
 import com.hackyeon.lolscore.data.DataObject.accountId
+import com.hackyeon.lolscore.data.DataObject.championMap
+import com.hackyeon.lolscore.data.DataObject.createEmblemImg
+import com.hackyeon.lolscore.data.DataObject.imgRetrofit
+import com.hackyeon.lolscore.data.DataObject.imgRetrofitService
 import com.hackyeon.lolscore.data.DataObject.matchActivity
 import com.hackyeon.lolscore.data.DataObject.name
 import com.hackyeon.lolscore.data.DataObject.profileIconId
 import com.hackyeon.lolscore.data.DataObject.rank
+import com.hackyeon.lolscore.data.DataObject.retrofitService
+import com.hackyeon.lolscore.data.DataObject.spellMap
 import com.hackyeon.lolscore.data.DataObject.summonerLevel
 import com.hackyeon.lolscore.data.DataObject.tier
 import com.hackyeon.lolscore.databinding.ActivityMatchBinding
@@ -30,10 +36,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class MatchActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMatchBinding
-    private lateinit var retrofit: Retrofit
-    private lateinit var retrofitService: RetrofitService
-    private lateinit var imgRetrofit: Retrofit
-    private lateinit var imgRetrofitService: ImgRetrofitService
     private var beginIndex = 0
     private var endIndex = 5
     private var matchList = mutableListOf<Match>()
@@ -69,25 +71,14 @@ class MatchActivity : AppCompatActivity() {
                 }
             }
         })
+
+        binding.backButton.setOnClickListener {
+            onBackPressed()
+        }
     }
 
     private fun initView() {
         matchActivity = this
-
-        retrofit = Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        retrofitService = retrofit.create(RetrofitService::class.java)
-
-        imgRetrofit = Retrofit.Builder()
-            .baseUrl(IMG_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        imgRetrofitService = imgRetrofit.create(ImgRetrofitService::class.java)
-
 
         Glide.with(this)
             .load("http://ddragon.leagueoflegends.com/cdn/11.16.1/img/profileicon/${profileIconId}.png")
@@ -99,26 +90,9 @@ class MatchActivity : AppCompatActivity() {
             levelTextView.text = summonerLevel.toString()
             nameTextView.text = name
             tierTextView.text = if (rank == "") tier else "$tier $rank"
-
-            var imgSrc = when (tier) {
-                "IRON" -> R.drawable.emblem_iron
-                "BRONZE" -> R.drawable.emblem_bronze
-                "SILVER" -> R.drawable.emblem_silver
-                "GOLD" -> R.drawable.emblem_gold
-                "PLATINUM" -> R.drawable.emblem_platinum
-                "DIAMOND" -> R.drawable.emblem_diamond
-                "MASTER" -> R.drawable.emblem_master
-                "GRANDMASTER" -> R.drawable.emblem_grandmaster
-                "CHALLENGER" -> R.drawable.emblem_challenger
-                else -> {
-                    binding.emblemImageView.visibility = GONE
-                    R.drawable.no_img
-                }
-            }
-
-            binding.emblemImageView.setImageResource(imgSrc)
-
         }
+
+        createEmblemImg(tier, binding.emblemImageView)
 
         binding.matchRecyclerView.layoutManager = LinearLayoutManager(this)
         binding.matchRecyclerView.adapter =
@@ -132,9 +106,7 @@ class MatchActivity : AppCompatActivity() {
                 matchList,
                 this
             )
-
     }
-
 
     private fun loadData() {
         retrofitService.getMatch(accountId, endIndex, beginIndex)
@@ -143,53 +115,22 @@ class MatchActivity : AppCompatActivity() {
                     if (response.isSuccessful) {
                         var matches = response.body()?.matches
                         if (!matches.isNullOrEmpty()) {
-                            for (i in matches!!) {
+                            for (i in matches) {
                                 matchList.add(i)
+                                championImgList.add(championMap[i.champion]!!)
+                                binding.matchRecyclerView.adapter?.notifyItemInserted(championImgList.size - 1)
                                 loadDataDetail(i, mapKey)
                                 mapKey++
                             }
-                            loadChampionImg(matches)
                         }
                     }
+                    isLoading = false
                 }
 
                 override fun onFailure(call: Call<Matches>, t: Throwable) {
                 }
             })
     }
-
-    private fun loadChampionImg(matches: MutableList<Match>) {
-        imgRetrofitService.getChampionImg().enqueue(object : Callback<ImgDataJson> {
-            override fun onResponse(call: Call<ImgDataJson>, response: Response<ImgDataJson>) {
-                if (response.isSuccessful) {
-
-                    var data = response.body()?.data
-                    var dataList = data?.keySet()
-
-                    for (i in matches) {
-                        for (j in dataList!!) {
-                            if (i.champion.toString() == data?.getAsJsonObject(j)
-                                    ?.getAsJsonPrimitive("key")?.asString
-                            ) {
-                                championImgList.add(j)
-                            }
-                        }
-                    }
-//                    binding.matchRecyclerView.adapter?.notifyDataSetChanged()
-                    binding.matchRecyclerView.adapter?.notifyItemRangeChanged(
-                        championImgList.size - 5,
-                        5
-                    )
-                    isLoading = false
-                }
-            }
-
-            override fun onFailure(call: Call<ImgDataJson>, t: Throwable) {
-            }
-        })
-
-    }
-
 
     private fun loadDataDetail(match: Match, key: Int) {
         retrofitService.getDetail(match.gameId).enqueue(object : Callback<Detail> {
@@ -201,47 +142,17 @@ class MatchActivity : AppCompatActivity() {
                         if (match.champion == i.championId) {
                             participantsMap[key] = i
                             statsMap[key] = i.stats
+                            spell1Map[key] = spellMap[i.spell1Id]!!
+                            spell2Map[key] = spellMap[i.spell2Id]!!
                         }
                     }
-                    loadSpellImg(key, participantsMap[key]!!)
+                    binding.matchRecyclerView.adapter?.notifyItemChanged(key)
                 }
-
             }
 
             override fun onFailure(call: Call<Detail>, t: Throwable) {
             }
         })
     }
-
-    private fun loadSpellImg(key: Int, participants: Participants) {
-        imgRetrofitService.getSpellImg().enqueue(object : Callback<ImgDataJson> {
-            override fun onResponse(call: Call<ImgDataJson>, response: Response<ImgDataJson>) {
-                if (response.isSuccessful) {
-                    var data = response.body()?.data
-                    var dataList = data?.keySet()
-
-                    for (i in dataList!!) {
-                        if (participants.spell1Id.toString() == data?.getAsJsonObject(i)
-                                ?.getAsJsonPrimitive("key")?.asString
-                        ) {
-                            spell1Map[key] = i
-                        } else if (participants.spell2Id.toString() == data?.getAsJsonObject(i)
-                                ?.getAsJsonPrimitive("key")?.asString
-                        ) {
-                            spell2Map[key] = i
-                        }
-                    }
-                    binding.matchRecyclerView.adapter?.notifyItemRangeChanged(key, 1)
-//                    binding.matchRecyclerView.adapter?.notifyDataSetChanged()
-                }
-            }
-
-            override fun onFailure(call: Call<ImgDataJson>, t: Throwable) {
-            }
-        })
-
-
-    }
-
 
 }
