@@ -101,6 +101,7 @@
             <TextView
                 android:id="@+id/kdaTextView"
                 android:layout_width="wrap_content"
+                android:fontFamily="@font/sc_dream3"
                 android:layout_height="52dp"
                 android:layout_marginStart="10dp"
                 android:gravity="center_vertical"
@@ -167,6 +168,7 @@
         android:id="@+id/dateTextView"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:fontFamily="@font/sc_dream2"
         android:background="@color/white"
         android:gravity="center"
         android:paddingHorizontal="5dp"

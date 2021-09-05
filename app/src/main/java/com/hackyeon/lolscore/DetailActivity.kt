@@ -2,6 +2,7 @@ package com.hackyeon.lolscore
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.core.content.ContextCompat
 import com.hackyeon.lolscore.data.*
 import com.hackyeon.lolscore.data.DataObject.detail
@@ -26,6 +27,7 @@ class DetailActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         initView()
+        clickedButton()
     }
 
     private fun initView(){
@@ -43,10 +45,13 @@ class DetailActivity : AppCompatActivity() {
         if(detail.participants[playerIdx].stats.win){
             binding.resultMainLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.win_blue))
             binding.mainResultTextView.text = "승리"
+            window.statusBarColor = ContextCompat.getColor(this, R.color.win_blue)
         }else {
             binding.resultMainLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.lose_red))
             binding.mainResultTextView.text = "패배"
+            window.statusBarColor = ContextCompat.getColor(this, R.color.lose_red)
         }
+        window.decorView.systemUiVisibility = 0
 
         val sdf = SimpleDateFormat("yyyy-MM-dd")
         var gameTimeStamp = timeStamp
@@ -95,6 +100,12 @@ class DetailActivity : AppCompatActivity() {
 
         supportFragmentManager.beginTransaction().add(R.id.myResultFragment, DetailFragment(teamMap[0]!!, participantsList[0], participantIdentitiesList[0])).commit()
         supportFragmentManager.beginTransaction().add(R.id.enemyResultFragment, DetailFragment(teamMap[1]!!, participantsList[1], participantIdentitiesList[1])).commit()
+    }
+
+    private fun clickedButton(){
+        binding.backButton.setOnClickListener {
+            onBackPressed()
+        }
     }
 
 }

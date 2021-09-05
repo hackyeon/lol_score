@@ -6,70 +6,80 @@
     android:layout_height="match_parent"
     tools:context=".DetailActivity">
 
-
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/resultMainLayout"
         android:layout_width="0dp"
-        android:paddingBottom="5dp"
         android:layout_height="wrap_content"
         android:background="@color/win_blue"
-        app:layout_constraintTop_toTopOf="parent"
+        android:paddingBottom="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.AppCompatImageButton
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
             android:id="@+id/backButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
             android:background="@null"
             android:src="@drawable/back_button_white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/mainResultTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="승리"
-            android:textColor="@color/white"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/backButton"
-            android:textSize="26sp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:id="@+id/mainResultTextView"/>
+            android:text="승리"
+            android:textColor="@color/white"
+            android:fontFamily="@font/sc_dream6"
+            android:textSize="26sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/backButton" />
 
         <TextView
+            android:layout_marginEnd="5dp"
+            android:id="@+id/dateTimeTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/dateTimeTextView"
             android:text="2021-08-01 | 36:00"
             android:textColor="@color/white"
+            android:fontFamily="@font/sc_dream4"
+            app:layout_constraintBottom_toBottomOf="@id/mainResultTextView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/mainResultTextView"
-            app:layout_constraintBottom_toBottomOf="@id/mainResultTextView"/>
+            app:layout_constraintTop_toTopOf="@id/mainResultTextView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <FrameLayout
+    <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/resultMainLayout"
-        app:layout_constraintBottom_toTopOf="@id/enemyResultFragment"
-        android:id="@+id/myResultFragment"/>
-
-    <FrameLayout
-        android:id="@+id/enemyResultFragment"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/myResultFragment"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/resultMainLayout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:id="@+id/myResultFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <FrameLayout
+                android:id="@+id/enemyResultFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -24,8 +24,8 @@ import retrofit2.Retrofit
 
 object DataObject {
     // 현재 고정키를 발급받지못해서 키를 수정하면서 사용중
-    // 앱 완성 후에도 고정키 발급이 안될 경우 따로 키입력 만들고 상수 -> 변수
-    const val API_KEY = "RGAPI-755543dc-c731-4833-9d67-54c39e7139c7"
+    // 앱 완성 후에도 고정키 발급이 안될 경우 따로 키입력 기능 만들기
+    const val API_KEY = "RGAPI-306e92b3-af67-4c81-9708-9bd7a117aea2"
 
     const val BASE_URL = "https://kr.api.riotgames.com/lol/"
     const val IMG_URL = "http://ddragon.leagueoflegends.com/"

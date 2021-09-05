@@ -12,4 +12,5 @@
     <color name="win_blue_soft">#CECEFF</color>
     <color name="lose_red_soft">#FFCFCF</color>
     <color name="match_item_background">#e2e2e2</color>
+    <color name="my_champion">#E6FFE6</color>
 </resources>

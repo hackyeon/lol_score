@@ -32,6 +32,7 @@
         android:id="@+id/levelTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/sc_dream3"
         android:textColor="@color/white"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="@+id/profileView"
@@ -46,6 +47,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textSize="16sp"
+        android:fontFamily="@font/sc_dream5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/levelTextView" />
@@ -70,6 +72,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/sc_dream4"
             android:textSize="12sp"
             android:id="@+id/tierTextView"/>
 

@@ -5,12 +5,15 @@ import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.hackyeon.lolscore.DetailActivity
 import com.hackyeon.lolscore.MatchActivity
+import com.hackyeon.lolscore.R
 import com.hackyeon.lolscore.data.*
 import com.hackyeon.lolscore.data.DataObject.glideImg
 import com.hackyeon.lolscore.data.DataObject.matchActivity
+import com.hackyeon.lolscore.data.DataObject.name
 import com.hackyeon.lolscore.data.database.Summoner
 import com.hackyeon.lolscore.databinding.ItemDetailBinding
 import retrofit2.Call
@@ -31,6 +34,7 @@ RecyclerView.Adapter<DetailRecyclerViewAdapter.ViewHolder>(){
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        if(name == participantIdentities[position].player.summonerName) holder.binding.recyclerViewItemLayout.setBackgroundColor(ContextCompat.getColor(context, R.color.my_champion))
         glideImg(context, championNameList[position], holder.binding.championImageView, "champion")
         glideImg(context, spell1NameList[position], holder.binding.spellOneImageView, "spell")
         glideImg(context, spell2NameList[position], holder.binding.spellTwoImageView, "spell")
