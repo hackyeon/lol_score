@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/itemLayout"
+    android:foreground="?attr/selectableItemBackground"
     android:background="@drawable/main_profile_background"
     android:layout_margin="5dp"
     android:layout_width="match_parent"
@@ -92,6 +93,7 @@
         android:layout_height="25dp"
         android:background="@null"
         android:scaleType="centerCrop"
+        android:foreground="?attr/selectableItemBackground"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

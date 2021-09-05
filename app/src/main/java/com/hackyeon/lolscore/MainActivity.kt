@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
                 .addHeader("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36\"")
                 .addHeader("Accept-Language", "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7")
                 .addHeader("Accept-Charset", "application/x-www-form-urlencoded; charset=UTF-8")
-                .addHeader("X-Riot-Token", "$API_KEY")
+                .addHeader("X-Riot-Token", API_KEY)
                 .build()
             chain.proceed(request)
         })

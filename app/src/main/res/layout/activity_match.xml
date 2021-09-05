@@ -13,6 +13,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:background="@null"
+        android:foreground="?attr/selectableItemBackground"
         android:src="@drawable/back_button_gray"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -50,12 +51,12 @@
             android:background="@drawable/level_background"
             android:fontFamily="@font/sc_dream3"
             android:gravity="center"
-            tools:text="11"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="@id/profileView"
             app:layout_constraintEnd_toEndOf="@id/profileView"
             app:layout_constraintStart_toStartOf="@id/profileView"
-            app:layout_constraintTop_toBottomOf="@id/profileView" />
+            app:layout_constraintTop_toBottomOf="@id/profileView"
+            tools:text="11" />
 
         <TextView
             android:id="@+id/nameTextView"
@@ -65,12 +66,12 @@
             android:gravity="center"
             android:textColor="@color/black"
             android:textSize="20sp"
-            tools:text="Hide On Bush"
             app:layout_constraintBottom_toBottomOf="@id/profileView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/profileView"
             app:layout_constraintTop_toTopOf="@id/profileView"
-            app:layout_constraintVertical_bias="0.3" />
+            app:layout_constraintVertical_bias="0.3"
+            tools:text="Hide On Bush" />
 
 
         <LinearLayout
@@ -85,20 +86,20 @@
             app:layout_constraintVertical_bias="0.3">
 
             <androidx.appcompat.widget.AppCompatImageView
-                tools:src="@drawable/emblem_gold"
                 android:id="@+id/emblemImageView"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginEnd="5dp"
-                android:scaleType="centerCrop" />
+                android:scaleType="centerCrop"
+                tools:src="@drawable/emblem_gold" />
 
             <TextView
-                tools:text="GOLD"
                 android:id="@+id/tierTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/sc_dream4"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                tools:text="GOLD" />
 
         </LinearLayout>
 

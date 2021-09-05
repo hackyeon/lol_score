@@ -23,6 +23,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:background="@null"
+            android:foreground="?attr/selectableItemBackground"
             android:src="@drawable/back_button_white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -34,11 +35,11 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/sc_dream6"
-            tools:text="승리"
             android:textColor="@color/white"
             android:textSize="26sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/backButton" />
+            app:layout_constraintTop_toBottomOf="@id/backButton"
+            tools:text="승리" />
 
         <TextView
             android:id="@+id/dateTimeTextView"
@@ -46,11 +47,11 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
             android:fontFamily="@font/sc_dream4"
-            tools:text="2021-08-01 | 36:00"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="@id/mainResultTextView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/mainResultTextView" />
+            app:layout_constraintTop_toTopOf="@id/mainResultTextView"
+            tools:text="2021-08-01 | 36:00" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
