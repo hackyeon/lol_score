@@ -11,38 +11,16 @@ import retrofit2.http.*
 
 interface RetrofitService {
 
-    @Headers(
-        "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36",
-        "Accept-Language: ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7",
-        "Accept-Charset: application/x-www-form-urlencoded; charset=UTF-8",
-        "Origin: https://developer.riotgames.com",
-        "X-Riot-Token: $API_KEY"
-    )
     @GET(GET_SUMMONER)
     fun getSummoner(
         @Path("name")name: String
     ): Call<SummonerData>
 
-    @Headers(
-        "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36",
-        "Accept-Language: ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7",
-        "Accept-Charset: application/x-www-form-urlencoded; charset=UTF-8",
-        "Origin: https://developer.riotgames.com",
-        "X-Riot-Token: $API_KEY"
-    )
     @GET(GET_TIER)
     fun getTier(
         @Path("encryptedSummonerId")id: String
     ): Call<Array<Tier>>
 
-
-    @Headers(
-        "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36",
-        "Accept-Language: ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7",
-        "Accept-Charset: application/x-www-form-urlencoded; charset=UTF-8",
-        "Origin: https://developer.riotgames.com",
-        "X-Riot-Token: $API_KEY"
-    )
     @GET(GET_MATCH_DATA)
     fun getMatch(
         @Path("encryptedAccountId")accountId: String,
@@ -50,18 +28,9 @@ interface RetrofitService {
         @Query("beginIndex")beginIndex: Int
     ): Call<Matches>
 
-    @Headers(
-        "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36",
-        "Accept-Language: ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7",
-        "Accept-Charset: application/x-www-form-urlencoded; charset=UTF-8",
-        "Origin: https://developer.riotgames.com",
-        "X-Riot-Token: $API_KEY"
-    )
     @GET(GET_MATCH_DETAIL)
     fun getDetail(
         @Path("matchId")gameId: Long
     ): Call<Detail>
-
-
 
 }

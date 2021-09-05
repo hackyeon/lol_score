@@ -9,6 +9,7 @@ import android.view.inputmethod.InputMethodManager
 import androidx.recyclerview.widget.GridLayoutManager
 import com.hackyeon.lolscore.adapter.MainRecyclerViewAdapter
 import com.hackyeon.lolscore.data.DataObject
+import com.hackyeon.lolscore.data.DataObject.API_KEY
 import com.hackyeon.lolscore.data.SummonerData
 import com.hackyeon.lolscore.data.DataObject.BASE_URL
 import com.hackyeon.lolscore.data.DataObject.championMap
@@ -28,6 +29,9 @@ import com.hackyeon.lolscore.databinding.ActivityMainBinding
 import com.hackyeon.lolscore.dialog_fragment.AlertDialogFragment
 import com.hackyeon.lolscore.service.ImgRetrofitService
 import com.hackyeon.lolscore.service.RetrofitService
+import okhttp3.Interceptor
+import okhttp3.OkHttpClient
+import okhttp3.Request
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -50,9 +54,21 @@ class MainActivity : AppCompatActivity() {
     private fun initView() {
         mainActivity = this
 
+        var httpClient = OkHttpClient().newBuilder()
+        httpClient.addInterceptor(Interceptor { chain ->
+            var request: Request = chain.request().newBuilder()
+                .addHeader("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36\"")
+                .addHeader("Accept-Language", "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7")
+                .addHeader("Accept-Charset", "application/x-www-form-urlencoded; charset=UTF-8")
+                .addHeader("X-Riot-Token", "$API_KEY")
+                .build()
+            chain.proceed(request)
+        })
+
         retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
+            .client(httpClient.build())
             .build()
 
         retrofitService = retrofit.create(RetrofitService::class.java)
