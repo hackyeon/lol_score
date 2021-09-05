@@ -8,11 +8,9 @@ import retrofit2.http.GET
 
 interface ImgRetrofitService {
 
-    // 챔피언 레트로핏
     @GET(GET_CHAMPION_JSON)
     fun getChampionImg(): Call<ImgDataJson>
 
-    // 스펠
     @GET(GET_SPELL_JSON)
     fun getSpellImg(): Call<ImgDataJson>
 
