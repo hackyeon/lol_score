@@ -33,21 +33,21 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
+            android:fontFamily="@font/sc_dream6"
             android:text="승리"
             android:textColor="@color/white"
-            android:fontFamily="@font/sc_dream6"
             android:textSize="26sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/backButton" />
 
         <TextView
-            android:layout_marginEnd="5dp"
             android:id="@+id/dateTimeTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:fontFamily="@font/sc_dream4"
             android:text="2021-08-01 | 36:00"
             android:textColor="@color/white"
-            android:fontFamily="@font/sc_dream4"
             app:layout_constraintBottom_toBottomOf="@id/mainResultTextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/mainResultTextView" />

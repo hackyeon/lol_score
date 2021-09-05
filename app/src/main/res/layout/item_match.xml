@@ -100,6 +100,7 @@
 
             <TextView
                 android:id="@+id/kdaTextView"
+                android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:fontFamily="@font/sc_dream3"
                 android:layout_height="52dp"
@@ -168,6 +169,7 @@
         android:id="@+id/dateTextView"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:textColor="@color/black"
         android:fontFamily="@font/sc_dream2"
         android:background="@color/white"
         android:gravity="center"

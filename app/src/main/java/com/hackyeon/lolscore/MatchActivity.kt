@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View.GONE
+import android.view.View.VISIBLE
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -64,6 +65,7 @@ class MatchActivity : AppCompatActivity() {
                 if (!binding.matchRecyclerView.canScrollVertically(1)) {
                     if (!isLoading) {
                         isLoading = true
+                        binding.loadingProgressBar.visibility = VISIBLE
                         beginIndex += 5
                         endIndex += 5
                         loadData()
@@ -115,16 +117,21 @@ class MatchActivity : AppCompatActivity() {
                     if (response.isSuccessful) {
                         var matches = response.body()?.matches
                         if (!matches.isNullOrEmpty()) {
-                            for (i in matches) {
-                                matchList.add(i)
-                                championImgList.add(championMap[i.champion]!!)
-                                binding.matchRecyclerView.adapter?.notifyItemInserted(championImgList.size - 1)
-                                loadDataDetail(i, mapKey)
+
+                            var dataLoadSuccess = mutableListOf<Boolean>()
+                            for(i in matches){
+                                dataLoadSuccess.add(false)
+                            }
+
+                            for (i in matches.indices) {
+                                matchList.add(matches[i])
+                                championImgList.add(championMap[matches[i].champion]!!)
+//                                binding.matchRecyclerView.adapter?.notifyItemInserted(championImgList.size - 1)
+                                loadDataDetail(matches[i], mapKey, dataLoadSuccess, i)
                                 mapKey++
                             }
                         }
                     }
-                    isLoading = false
                 }
 
                 override fun onFailure(call: Call<Matches>, t: Throwable) {
@@ -132,7 +139,7 @@ class MatchActivity : AppCompatActivity() {
             })
     }
 
-    private fun loadDataDetail(match: Match, key: Int) {
+    private fun loadDataDetail(match: Match, key: Int, dataLoadSuccess: MutableList<Boolean>, count: Int) {
         retrofitService.getDetail(match.gameId).enqueue(object : Callback<Detail> {
             override fun onResponse(call: Call<Detail>, response: Response<Detail>) {
                 if (response.isSuccessful) {
@@ -146,7 +153,17 @@ class MatchActivity : AppCompatActivity() {
                             spell2Map[key] = spellMap[i.spell2Id]!!
                         }
                     }
-                    binding.matchRecyclerView.adapter?.notifyItemChanged(key)
+
+                    dataLoadSuccess[count] = true
+                    var loadingCnt = 0
+                    for(i in dataLoadSuccess){
+                        if(i) loadingCnt++
+                    }
+                    if(loadingCnt == dataLoadSuccess.size){
+                        binding.loadingProgressBar.visibility = GONE
+                        binding.matchRecyclerView.adapter?.notifyDataSetChanged()
+                        isLoading = false
+                    }
                 }
             }
 
