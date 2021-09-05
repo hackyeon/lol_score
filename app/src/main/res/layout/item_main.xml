@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/itemLayout"
     android:background="@drawable/main_profile_background"
     android:layout_margin="5dp"
@@ -28,6 +29,7 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
+        tools:text="11"
         android:background="@drawable/level_background"
         android:id="@+id/levelTextView"
         android:layout_width="wrap_content"
@@ -41,6 +43,7 @@
         app:layout_constraintTop_toBottomOf="@id/profileView" />
 
     <TextView
+        tools:text="hide on bush"
         android:textStyle="bold"
         android:id="@+id/nameTextView"
         android:layout_width="wrap_content"
@@ -63,6 +66,7 @@
         app:layout_constraintTop_toBottomOf="@id/nameTextView">
 
         <androidx.appcompat.widget.AppCompatImageView
+            tools:src="@drawable/emblem_grandmaster"
             android:id="@+id/emblemImageView"
             android:layout_width="16dp"
             android:layout_height="16dp"
@@ -70,6 +74,7 @@
             android:layout_marginEnd="2dp"/>
 
         <TextView
+            tools:text="MASTER"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/sc_dream4"

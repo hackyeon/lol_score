@@ -11,111 +11,95 @@
         android:id="@+id/resultLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/win_blue_soft"
+        tools:background="@color/win_blue_soft"
         android:paddingVertical="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            tools:text="승리"
+            tools:textColor="@color/win_blue"
             android:id="@+id/resultTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/fragment_detail_text_view"
             android:layout_marginStart="10dp"
-            android:fontFamily="@font/sc_dream5"
-            android:text="패배"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/teamColorTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/fragment_detail_text_view"
             android:layout_marginStart="2dp"
-            android:fontFamily="@font/sc_dream5"
-            android:text="(블루)"
+            tools:text="(블루)"
             app:layout_constraintBottom_toBottomOf="@id/resultTextView"
             app:layout_constraintStart_toEndOf="@id/resultTextView"
             app:layout_constraintTop_toTopOf="@id/resultTextView" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/kdaImgView"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            style="@style/fragment_detail_image_view"
             android:layout_marginStart="5dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/kda_blue"
+            tools:src="@drawable/kda_blue"
             app:layout_constraintBottom_toBottomOf="@id/resultTextView"
             app:layout_constraintStart_toEndOf="@id/teamColorTextView"
             app:layout_constraintTop_toTopOf="@id/resultTextView" />
 
         <TextView
+            tools:text="13 / 13/ 13"
             android:id="@+id/kdaTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/sc_dream5"
-            android:text="43 / 40 / 40"
+            style="@style/fragment_detail_text_view"
             app:layout_constraintBottom_toBottomOf="@id/resultTextView"
             app:layout_constraintStart_toEndOf="@id/kdaImgView"
             app:layout_constraintTop_toTopOf="@id/resultTextView" />
 
         <TextView
+            tools:text="3"
             android:id="@+id/turretTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/fragment_detail_text_view"
             android:layout_marginEnd="5dp"
-            android:fontFamily="@font/sc_dream5"
-            android:text="3"
             app:layout_constraintBottom_toBottomOf="@id/resultTextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/resultTextView" />
 
         <androidx.appcompat.widget.AppCompatImageView
+            tools:src="@drawable/turret_blue"
             android:id="@+id/turretImgView"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/turret_blue"
+            style="@style/fragment_detail_image_view"
             app:layout_constraintBottom_toBottomOf="@id/resultTextView"
             app:layout_constraintEnd_toStartOf="@id/turretTextView"
             app:layout_constraintTop_toTopOf="@id/resultTextView" />
 
         <TextView
+            tools:text="2"
             android:id="@+id/dragonTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/fragment_detail_text_view"
             android:layout_marginEnd="5dp"
-            android:fontFamily="@font/sc_dream5"
-            android:text="4"
             app:layout_constraintBottom_toBottomOf="@id/resultTextView"
             app:layout_constraintEnd_toStartOf="@id/turretImgView"
             app:layout_constraintTop_toTopOf="@id/resultTextView" />
 
         <androidx.appcompat.widget.AppCompatImageView
+            tools:src="@drawable/dragon_blue"
             android:id="@+id/dragonImgView"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/dragon_blue"
+            style="@style/fragment_detail_image_view"
             app:layout_constraintBottom_toBottomOf="@id/resultTextView"
             app:layout_constraintEnd_toStartOf="@id/dragonTextView"
             app:layout_constraintTop_toTopOf="@id/resultTextView" />
 
         <TextView
+            tools:text="1"
             android:id="@+id/nashorTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/fragment_detail_text_view"
             android:layout_marginEnd="5dp"
-            android:fontFamily="@font/sc_dream5"
-            android:text="3"
             app:layout_constraintBottom_toBottomOf="@id/resultTextView"
             app:layout_constraintEnd_toStartOf="@id/dragonImgView"
             app:layout_constraintTop_toTopOf="@id/resultTextView" />
 
         <androidx.appcompat.widget.AppCompatImageView
+            tools:src="@drawable/nashor_blue"
             android:id="@+id/nashorImgView"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/nashor_blue"
+            style="@style/fragment_detail_image_view"
             app:layout_constraintBottom_toBottomOf="@id/resultTextView"
             app:layout_constraintEnd_toStartOf="@id/nashorTextView"
             app:layout_constraintTop_toTopOf="@id/resultTextView" />

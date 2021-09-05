@@ -1,8 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- common -->
+    <style name="image_match">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <!-- fragment_detail -->
+    <style name="fragment_detail_text_view">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="fontFamily">@font/sc_dream5</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="fragment_detail_image_view">
+        <item name="android:layout_width">20dp</item>
+        <item name="android:layout_height">20dp</item>
+    </style>
+
+    <!--  item_match -->
+    <style name="item_match_spell_card_view">
+        <item name="android:layout_width">25dp</item>
+        <item name="android:layout_height">25dp</item>
+        <item name="cardCornerRadius">12.5dp</item>
+        <item name="cardElevation">0dp</item>
+    </style>
+
+    <style name="item_match_item_image_view">
+        <item name="android:layout_width">26dp</item>
+        <item name="android:layout_height">26dp</item>
+        <item name="android:layout_marginEnd">2dp</item>
+    </style>
 
 
+    <!--  item_detail -->
+    <style name="item_detail_name_text_view">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="fontFamily">@font/sc_dream3</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">12sp</item>
+    </style>
 
+    <style name="item_detail_spell_image_view">
+        <item name="android:layout_width">16dp</item>
+        <item name="android:layout_height">16dp</item>
+    </style>
 
+    <style name="item_detail_item_image_View">
+        <item name="android:layout_width">16dp</item>
+        <item name="android:layout_height">16dp</item>
+        <item name="android:layout_marginEnd">2dp</item>
+    </style>
+
+    <style name="item_detail_info_text_view">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="fontFamily">@font/sc_dream2</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">11sp</item>
+    </style>
 
 </resources>

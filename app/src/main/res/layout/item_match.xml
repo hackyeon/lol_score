@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/matchLayout"
-    android:paddingTop="2dp"
-    android:background="@color/match_item_background"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/match_item_background"
+    android:paddingTop="2dp">
 
     <TextView
+        tools:text="승"
+        tools:background="@color/win_blue"
         android:id="@+id/resultTextView"
         android:layout_width="45dp"
         android:layout_height="50dp"
@@ -21,6 +24,8 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        tools:text="31:31"
+        tools:background="@color/win_blue"
         android:id="@+id/timeTextView"
         android:layout_width="45dp"
         android:layout_height="50dp"
@@ -56,12 +61,12 @@
                 android:layout_height="52dp"
                 app:cardCornerRadius="26dp"
                 app:cardElevation="0dp">
+
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/championImageView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </androidx.cardview.widget.CardView>
+                    style="@style/image_match"/>
 
+            </androidx.cardview.widget.CardView>
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -70,95 +75,74 @@
                 android:orientation="vertical">
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    app:cardCornerRadius="12.5dp"
-                    android:layout_marginBottom="2dp"
-                    app:cardElevation="0dp">
+                    style="@style/item_match_spell_card_view"
+                    android:layout_marginBottom="2dp">
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/spellOneImageView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"/>
+                        style="@style/image_match"/>
 
                 </androidx.cardview.widget.CardView>
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    app:cardCornerRadius="12.5dp"
-                    app:cardElevation="0dp">
+                <androidx.cardview.widget.CardView style="@style/item_match_spell_card_view">
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/spellTwoImageView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"/>
+                        style="@style/image_match"/>
 
                 </androidx.cardview.widget.CardView>
 
             </LinearLayout>
 
             <TextView
+                tools:text="9 / 3 / 5"
                 android:id="@+id/kdaTextView"
-                android:textColor="@color/black"
                 android:layout_width="wrap_content"
-                android:fontFamily="@font/sc_dream3"
                 android:layout_height="52dp"
                 android:layout_marginStart="10dp"
+                android:fontFamily="@font/sc_dream3"
                 android:gravity="center_vertical"
+                android:textColor="@color/black"
                 android:textSize="18sp" />
 
 
         </LinearLayout>
 
         <LinearLayout
-            android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="34dp"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/itemZeroImageView"
-                android:layout_width="26dp"
-                android:layout_height="26dp"
-                android:layout_marginEnd="2dp" />
+                style="@style/item_match_item_image_view" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/itemOneImageView"
-                android:layout_width="26dp"
-                android:layout_height="26dp"
-                android:layout_marginEnd="2dp" />
+                style="@style/item_match_item_image_view" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/itemTwoImageView"
-                android:layout_width="26dp"
-                android:layout_height="26dp"
-                android:layout_marginEnd="2dp" />
+                style="@style/item_match_item_image_view" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/itemThreeImageView"
-                android:layout_width="26dp"
-                android:layout_height="26dp"
-                android:layout_marginEnd="2dp" />
+                style="@style/item_match_item_image_view" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/itemFourImageView"
-                android:layout_width="26dp"
-                android:layout_height="26dp"
-                android:layout_marginEnd="2dp" />
+                style="@style/item_match_item_image_view" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/itemFiveImageView"
-                android:layout_width="26dp"
-                android:layout_height="26dp"
-                android:layout_marginEnd="2dp" />
+                style="@style/item_match_item_image_view" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/itemSixImageView"
-                android:layout_width="26dp"
-                android:layout_height="26dp" />
-
+                style="@style/item_match_item_image_view"
+                android:layout_marginEnd="0dp" />
 
         </LinearLayout>
 
@@ -166,14 +150,15 @@
     </LinearLayout>
 
     <TextView
+        tools:text="09/01\n12:12"
         android:id="@+id/dateTextView"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:textColor="@color/black"
-        android:fontFamily="@font/sc_dream2"
         android:background="@color/white"
+        android:fontFamily="@font/sc_dream2"
         android:gravity="center"
         android:paddingHorizontal="5dp"
+        android:textColor="@color/black"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@id/timeTextView"
         app:layout_constraintEnd_toEndOf="parent"

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/recyclerViewItemLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -20,19 +21,19 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/championImageView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            style="@style/image_match"/>
+
 
     </androidx.cardview.widget.CardView>
 
     <TextView
+        tools:text="11"
         android:id="@+id/levelTextView"
         android:layout_width="22dp"
         android:layout_height="18sp"
         android:background="@drawable/level_background"
         android:fontFamily="@font/sc_dream3"
         android:gravity="center"
-        android:text="11"
         android:textColor="@color/white"
         android:textSize="9sp"
         app:layout_constraintBottom_toBottomOf="@id/championView"
@@ -48,14 +49,12 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/spellOneImageView"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
+            style="@style/item_detail_spell_image_view"
             android:layout_marginVertical="1dp" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/spellTwoImageView"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
+            style="@style/item_detail_spell_image_view"
             android:layout_marginVertical="1dp" />
 
     </LinearLayout>
@@ -73,25 +72,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            tools:text="hide on bush"
             android:id="@+id/nameTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/sc_dream3"
-            android:gravity="center_vertical"
-            android:text="정글장인뽀삐"
-            android:textColor="@color/black"
-            android:textSize="12sp" />
+            style="@style/item_detail_name_text_view" />
 
         <TextView
+            tools:text="4 / 5 / 6"
             android:id="@+id/kdaTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/sc_dream3"
-            android:text="14 / 12 / 33"
-            android:textColor="@color/black"
-            android:textSize="12sp" />
+            style="@style/item_detail_name_text_view" />
 
     </LinearLayout>
 
@@ -116,44 +104,32 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/itemZeroImageView"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_marginEnd="2dp" />
+                style="@style/item_detail_item_image_View" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/itemOneImageView"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_marginEnd="2dp" />
+                style="@style/item_detail_item_image_View" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/itemTwoImageView"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_marginEnd="2dp" />
+                style="@style/item_detail_item_image_View" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/itemThreeImageView"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_marginEnd="2dp" />
+                style="@style/item_detail_item_image_View" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/itemFourImageView"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_marginEnd="2dp" />
+                style="@style/item_detail_item_image_View" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/itemFiveImageView"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_marginEnd="2dp" />
+                style="@style/item_detail_item_image_View" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/itemSixImageView"
-                android:layout_width="16dp"
-                android:layout_height="16dp" />
+                style="@style/item_detail_item_image_View"
+                android:layout_marginEnd="0dp" />
 
         </LinearLayout>
 
@@ -165,34 +141,19 @@
             android:orientation="horizontal">
 
             <TextView
+                tools:text="190"
                 android:id="@+id/minionKillTextView"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:fontFamily="@font/sc_dream2"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:textSize="11sp" />
+                style="@style/item_detail_info_text_view"/>
 
             <TextView
+                tools:text="14.3K"
                 android:id="@+id/goldTextView"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:fontFamily="@font/sc_dream2"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:textSize="11sp" />
+                style="@style/item_detail_info_text_view"/>
 
             <TextView
+                tools:text="12,428"
                 android:id="@+id/damageTextView"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:fontFamily="@font/sc_dream2"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:textSize="11sp" />
+                style="@style/item_detail_info_text_view"/>
 
         </LinearLayout>
 

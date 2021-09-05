@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">lolScore</string>
+    <string name="app_name">LOL 전적검색</string>
     <string name="record_text">최근 기록</string>
     <string name="search_summoner_hint">소환사 검색</string>
 </resources>
