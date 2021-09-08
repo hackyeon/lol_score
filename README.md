@@ -21,5 +21,4 @@ min api level 23
 
 ### 시연 영상
 
-
-<a target="_blank" href="https://skek933.cafe24.com/video/lol_video1.mp4">github 저장소</a>
+<a href="https://skek933.cafe24.com/video/lol_video1.mp4">동영상 보기</a>
