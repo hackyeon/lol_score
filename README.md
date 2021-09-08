@@ -20,5 +20,4 @@ min api level 23
 </div>
 
 ### 시연 영상
-
-<a href="https://skek933.cafe24.com/video/lol_video1.mp4">동영상 보기</a>
+<video src="https://user-images.githubusercontent.com/84886401/132450861-6f16d8b7-29a2-4e42-bec6-e3653335b5ef.mp4">
