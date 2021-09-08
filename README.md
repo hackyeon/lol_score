@@ -20,4 +20,3 @@ min api level 23
 </div>
 
 ### 시연 영상
-
