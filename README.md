@@ -13,9 +13,11 @@ min api level 23
 이미지: Glide<br>
 
 ### 스크린샷
-![lol1](https://user-images.githubusercontent.com/84886401/132437849-2916c339-f1d9-4ceb-b4e8-ec936fa97d6c.jpg)
-![lol2](https://user-images.githubusercontent.com/84886401/132438036-b5d6ab60-6fa3-44c9-91ae-45e061a2e27e.jpg)
-![lol3](https://user-images.githubusercontent.com/84886401/132438040-23ff2380-27e7-4276-a1e2-ca888ca42004.jpg)
+<div>
+<img src="https://user-images.githubusercontent.com/84886401/132437849-2916c339-f1d9-4ceb-b4e8-ec936fa97d6c.jpg" width="20%">
+<img src="https://user-images.githubusercontent.com/84886401/132438036-b5d6ab60-6fa3-44c9-91ae-45e061a2e27e.jpg" width="20%">
+<img src="https://user-images.githubusercontent.com/84886401/132438040-23ff2380-27e7-4276-a1e2-ca888ca42004.jpg" width="20%">
+</div>
 
 ### 시연 영상
 
