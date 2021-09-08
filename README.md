@@ -14,10 +14,11 @@ min api level 23
 
 ### 스크린샷
 <div>
-<img src="https://user-images.githubusercontent.com/84886401/132437849-2916c339-f1d9-4ceb-b4e8-ec936fa97d6c.jpg" width="20%">
-<img src="https://user-images.githubusercontent.com/84886401/132438036-b5d6ab60-6fa3-44c9-91ae-45e061a2e27e.jpg" width="20%">
-<img src="https://user-images.githubusercontent.com/84886401/132438040-23ff2380-27e7-4276-a1e2-ca888ca42004.jpg" width="20%">
+<img src="https://user-images.githubusercontent.com/84886401/132437849-2916c339-f1d9-4ceb-b4e8-ec936fa97d6c.jpg" width="25%">
+<img src="https://user-images.githubusercontent.com/84886401/132438036-b5d6ab60-6fa3-44c9-91ae-45e061a2e27e.jpg" width="25%">
+<img src="https://user-images.githubusercontent.com/84886401/132438040-23ff2380-27e7-4276-a1e2-ca888ca42004.jpg" width="25%">
 </div>
 
 ### 시연 영상
-<video src="https://user-images.githubusercontent.com/84886401/132450861-6f16d8b7-29a2-4e42-bec6-e3653335b5ef.mp4">
+
+<a href="https://skek933.cafe24.com/video/lol_video1.mp4">동영상 보기</a>
